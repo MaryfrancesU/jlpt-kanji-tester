@@ -1,0 +1,39 @@
+import Link from "next/link";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+
+
+const ModeModal = ({ open, handleClose, level }) => {
+    return (
+        <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>Select A Quiz Mode</DialogTitle>
+
+            <DialogContent>
+                Writing mode will show you a kanji's English definition and
+                requires you to write it out on a separate piece of paper. You
+                get one pronunciation hint before you can reveal the answer.
+                Pronunciation mode will show you the kanji and requires you to
+                type in at least one of its pronunciations.
+            </DialogContent>
+
+            <DialogActions>
+                <Link href={`/${level}/writing`}>
+                    <Button variant="contained" color="primary">
+                        Writing
+                    </Button>
+                </Link>
+                <Link href={`/${level}/pronunciation`}>
+                    <Button variant="contained" color="secondary">
+                        Pronunciation
+                    </Button>
+                </Link>
+
+            </DialogActions>
+        </Dialog>
+    );
+};
+
+export default ModeModal;
