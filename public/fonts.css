@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'NinjaKageDemo-Regular';
+  src: url('/NinjaKageDemo-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NinjaKageDemo-Rough';
+  src: url('/NinjaKageDemo-Rough.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Amanojaku';
+  src: url('/AmanojakuDemo.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

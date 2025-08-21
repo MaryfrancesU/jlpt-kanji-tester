@@ -7,17 +7,18 @@ const LevelCard = ({ level, onClick }) => {
             onClick={onClick}
             elevation={3}
             sx={{
+                margin: 1,
                 padding: 2,
                 cursor: "pointer",
                 textAlign: "center",
-                width: 200,
+                width: 150,
                 "&:hover": {
                     transform: "scale(1.04)",
                 },
                 transition: "transform 0.2s",
             }}
         >
-            <Typography variant="h2" component="div" align="center">
+            <Typography variant="h2" align="center">
                 {level}
             </Typography>
         </Paper>

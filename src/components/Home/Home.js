@@ -21,7 +21,12 @@ const Home = () => {
 
     return (
         <>
-            <Stack direction="row" justifyContent="center" spacing={3}>
+            <Stack
+                direction={{ sm: "column", md: "row" }}
+                justifyContent="center"
+                alignItems="center"
+                spacing={3}
+            >
                 {levels.map((level) => (
                     <LevelCard
                         key={level}

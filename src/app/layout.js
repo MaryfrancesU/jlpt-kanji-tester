@@ -23,7 +23,11 @@ export default function RootLayout({ children }) {
             <head>
                 <title>JLPT KANJI TESTER</title>
                 <link rel="icon" href="/favicon.ico" />
-                <meta name="apple-mobile-web-app-title" content="JlptKanjiTester" />
+                <meta
+                    name="apple-mobile-web-app-title"
+                    content="JlptKanjiTester"
+                />
+                <link rel="stylesheet" href="/fonts.css" />
             </head>
             <body>
                 <AppRouterCacheProvider>
