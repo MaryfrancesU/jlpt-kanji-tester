@@ -13,7 +13,7 @@ const ModeModal = ({ open, handleClose, level }) => {
 
             <DialogContent>
                 <Typography>
-                    Writing mode will show you a kanji's English definition and
+                    Writing mode will show you a kanji&apos;s English definition and
                     requires you to write it out on a separate piece of paper.
                     You get one pronunciation hint before you can reveal the
                     answer.
