@@ -46,7 +46,7 @@ const WritingQuizInterface = ({ allKanjiWithInfo }) => {
     }
 
     if (currentIndex >= allKanjiWithInfo.length) {
-        return <QuizInterface> Quiz complete! Well done! </QuizInterface>;
+        return <QuizInterface showBackButton> Quiz complete! Well done! </QuizInterface>;
     }
 
     const currentKanji = allKanjiWithInfo[currentIndex];
@@ -93,7 +93,7 @@ const WritingQuizInterface = ({ allKanjiWithInfo }) => {
                         <Button
                             variant="contained"
                             color="secondary"
-                            sx={{ fontWeight: 600, boxShadow: 2, mt: "70px"}}
+                            sx={{ fontWeight: 600, boxShadow: 2, mt: "70px" }}
                             onClick={() => setShowAnswer(true)}
                         >
                             Show Answer

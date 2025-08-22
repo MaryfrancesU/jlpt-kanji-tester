@@ -1,3 +1,4 @@
+import BackButton from "./BackButton";
 import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 
@@ -21,7 +22,7 @@ const Progress = styled("div")({
     color: "#888",
 });
 
-const QuizInterface = ({children, showProgress, currentIndex, numQuestions}) => {
+const QuizInterface = ({children, showProgress, showBackButton, currentIndex, numQuestions}) => {
     return( 
         <Interface maxWidth="md">
             {children}
@@ -29,6 +30,8 @@ const QuizInterface = ({children, showProgress, currentIndex, numQuestions}) => 
             {showProgress && <Progress>
                 {currentIndex + 1} / {numQuestions}
             </Progress>}
+
+            {showBackButton && <BackButton />}
         </Interface>
     );
 };

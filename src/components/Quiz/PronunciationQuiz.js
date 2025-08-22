@@ -67,7 +67,7 @@ const PronunciationQuiz = ({ allKanjiWithInfo }) => {
     }
 
     if (currentIndex >= allKanjiWithInfo.length) {
-        return <QuizInterface> Quiz complete! Well done! </QuizInterface>;
+        return <QuizInterface showBackButton> Quiz complete! Well done! </QuizInterface>;
     }
 
     const normalizeKun = (str) =>
