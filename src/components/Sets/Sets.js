@@ -1,18 +1,15 @@
 "use client";
+import SetLink from "./SetLink";
+import SetModal from "./SetModal";
+import Grid from "@mui/material/Grid";
+import { useMemo, useState } from "react";
+import Typography from "@mui/material/Typography";
 import { useKanjiContext } from "@/context/LevelKanjiContext";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useMemo } from "react";
-import { styled } from "@mui/material/styles";
-const StyledSelect = styled('select')({
-    marginLeft: 8,
-});
 
-const Sets = () => {
-    const params = useParams();
-    const { level, mode } = params;
+const Sets = ({ mode }) => {
+    const [open, setOpen] = useState(false);
+    const quizLengths = [20, 30, 40, 60, 80];
+    const [setNumber, setSetNumber] = useState(null);
 
     const { levelKanji, quizLength, setQuizLength } = useKanjiContext();
     const totalCount = levelKanji.length;
@@ -28,39 +25,49 @@ const Sets = () => {
         return result;
     }, [quizLength, totalCount]);
 
+    const handleViewKanji = (setNumber) => {
+        setOpen(true);
+        setSetNumber(setNumber);
+    };
+
+    const handleCloseModal = () => {
+        setOpen(false);
+    };
+
     return (
         <>
-            <h1>
-                JLPT {level.charAt(0).toUpperCase() + level.slice(1)} {mode}
-            </h1>
-
-            <Link href={`${mode}/all`}>
-                <Button variant="contained" color="primary" sx={{ boxShadow: 3, borderRadius: 2, px: 3, py: 1, fontWeight: 600 }}>
-                    Study All
-                </Button>
-            </Link>
-
-            <label>
+            <Typography>
                 Study in sets of
-                <StyledSelect
+                <select
                     value={quizLength}
-                    onChange={e => setQuizLength(Number(e.target.value))}
+                    style={{ marginLeft: "8px" }}
+                    onChange={(e) => setQuizLength(Number(e.target.value))}
                 >
-                    {[20, 30, 40, 60, 80].map(val => (
-                        <option key={val} value={val}>{val}</option>
+                    {quizLengths.map((val) => (
+                        <option key={val} value={val}>
+                            {val}
+                        </option>
                     ))}
-                </StyledSelect>
-            </label>
+                </select>
+            </Typography>
 
-            {allSets.map((item) => (
-                <Box key={item.label} sx={{ boxShadow: 2, borderRadius: 2, my: 2, p: 1, background: 'white', display: 'inline-block' }}>
-                    <Link href={{pathname: `${mode}/set${item.number}`}}>
-                        <Button variant="outlined" color="secondary" sx={{ fontWeight: 600, px: 3, py: 1 }}>
-                            {item.label}
-                        </Button>
-                    </Link>
-                </Box>
-            ))}
+            <Grid container spacing={2} columns={8}>
+                {allSets.map((item) => (
+                    <SetLink
+                        key={item.label}
+                        mode={mode}
+                        number={item.number}
+                        label={item.label}
+                        handleViewKanji={handleViewKanji}
+                    />
+                ))}
+            </Grid>
+
+            <SetModal
+                open={open}
+                handleClose={handleCloseModal}
+                setNumber={setNumber}
+            />
         </>
     );
 };

@@ -15,12 +15,12 @@ const ModeModal = ({ open, handleClose, level }) => {
                 <Typography>
                     Writing mode will show you a kanji&apos;s English definition and
                     requires you to write it out on a separate piece of paper.
-                    You get one pronunciation hint before you can reveal the
+                    You can get one pronunciation hint before you reveal the
                     answer.
                 </Typography>
 
                 <Typography>
-                    Pronunciation mode will show you the kanji and requires you
+                    Pronunciation mode will show you a kanji and requires you
                     to type in at least one of its pronunciations.
                 </Typography>
             </DialogContent>

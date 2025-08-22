@@ -2,6 +2,7 @@
     This layout.js file wraps all pages and routes under the [level] directory. That is:
         - app/[level]/[mode]/page.js
         - app/[level]/[mode]/[set]/page.js
+    That is, the LevelKanjiProvider context is available to the Sets and Quiz components.
 */
 
 import { LevelKanjiProvider } from "@/context/LevelKanjiContext";
@@ -17,7 +18,7 @@ export default async function LevelLayout({ children, params }) {
     }
 
     return (
-        <div id="level-layout">
+        <div id="level-layout" style={{ padding: "16px" }}>
             <LevelKanjiProvider levelKanji={kanjiForLevel}>{children}</LevelKanjiProvider>
         </div>
     );
