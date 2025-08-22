@@ -1,15 +1,8 @@
-import PronunciationQuiz from '@/components/Quiz/Pronunciation/PronunciationQuiz';
-import WritingQuiz from '@/components/Quiz/Writing/WritingQuiz';
+import QuizPage from '@/components/Quiz/QuizPage';
 
-export default async function QuizPage({ params }) {
+export default async function Quiz({ params }) {
     const resolvedParams = await params;
     const { mode } = resolvedParams;
 
-    if (mode === 'pronunciation') {
-        return <PronunciationQuiz />;
-    }
-    if (mode === 'writing') {
-        return <WritingQuiz />;
-    }
-    return <div>Invalid quiz mode.</div>;
+    return <QuizPage mode={mode} />;
 }

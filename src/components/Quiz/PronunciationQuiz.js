@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
+
 const StyledForm = styled('form')(({ theme }) => ({
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: theme.shape.borderRadius * 2,
@@ -56,14 +57,14 @@ const Progress = styled('div')({
 });
 import React, { useState } from "react";
 
-const QuizInterface = ({ allKanjiWithInfo }) => {
-    const [currentIdx, setCurrentIdx] = useState(0);
+const PronunciationQuiz = ({ allKanjiWithInfo }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [kunInput, setKunInput] = useState("");
     const [onInput, setOnInput] = useState("");
     const [showAnswers, setShowAnswers] = useState(false);
 
     const handleNext = () => {
-        setCurrentIdx((prev) => prev + 1);
+        setCurrentIndex((prev) => prev + 1);
         setKunInput("");
         setOnInput("");
         setShowAnswers(false);
@@ -73,11 +74,11 @@ const QuizInterface = ({ allKanjiWithInfo }) => {
         return <div>Loading quiz...</div>;
     }
 
-    if (currentIdx >= allKanjiWithInfo.length) {
+    if (currentIndex >= allKanjiWithInfo.length) {
         return <div>Quiz complete! Well done!</div>;
     }
 
-    const currentKanji = allKanjiWithInfo[currentIdx];
+    const currentKanji = allKanjiWithInfo[currentIndex];
     const kunyomi = currentKanji.kunyomi || [];
     const onyomi = currentKanji.onyomi || [];
 
@@ -153,14 +154,14 @@ const QuizInterface = ({ allKanjiWithInfo }) => {
             )}
             {showAnswers && (
                 <Button onClick={handleNext} variant="outlined" color="secondary" sx={{ fontWeight: 600, boxShadow: 1, mt: 2 }}>
-                    {currentIdx < allKanjiWithInfo.length - 1 ? "Next" : "Finish"}
+                    {currentIndex < allKanjiWithInfo.length - 1 ? "Next" : "Finish"}
                 </Button>
             )}
             <Progress>
-                {currentIdx + 1} / {allKanjiWithInfo.length}
+                {currentIndex + 1} / {allKanjiWithInfo.length}
             </Progress>
         </StyledForm>
     );
 };
 
-export default QuizInterface;
+export default PronunciationQuiz;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import QuizInterface from "../QuizInterface";
+import QuizInterface from "./QuizInterface";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
