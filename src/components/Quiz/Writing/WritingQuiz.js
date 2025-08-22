@@ -1,5 +1,5 @@
 "use client";
-import { getKanjiInfo } from "@/api/kanji";
+import { getKanjiForSet } from "@/helpers/setHelpers";
 import { useKanjiContext } from "@/context/LevelKanjiContext";
 import { getStartAndEndIndex } from "@/helpers/setHelpers";
 import { useEffect, useState } from "react";
@@ -14,27 +14,16 @@ const WritingQuiz = () => {
 
     const setNumber = Number(set.replace("set", ""));
     const {start, end} = getStartAndEndIndex(setNumber, quizLength);
-    const setKanji = levelKanji.slice(start, end);
 
     const [allKanjiWithInfo, setAllKanjiWithInfo] = useState([]);
     
     useEffect(() => {
         const fetchInfo = async () => {
-            const results = await Promise.all(
-                setKanji.map(async (kanji) => {
-                    const info = await getKanjiInfo(kanji);
-                    return {
-                        kanji,
-                        meanings: info.meanings || [],
-                        kunyomi: info.kun_readings || [],
-                        onyomi: info.on_readings || [],
-                    };
-                })
-            );
+            const results = await getKanjiForSet(start, end, levelKanji);
             setAllKanjiWithInfo(results);
         };
         fetchInfo();
-    }, [setKanji]);
+    }, [start, end, levelKanji]);
 
     return (
         <>

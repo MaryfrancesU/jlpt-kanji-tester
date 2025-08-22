@@ -1,5 +1,5 @@
-import PronunciationQuiz from '@/components/Pronunciation/PronunciationQuiz';
-import WritingQuiz from '@/components/Writing/WritingQuiz';
+import PronunciationQuiz from '@/components/Quiz/Pronunciation/PronunciationQuiz';
+import WritingQuiz from '@/components/Quiz/Writing/WritingQuiz';
 
 export default async function QuizPage({ params }) {
     const resolvedParams = await params;
